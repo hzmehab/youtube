@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import Display from "./Components/Display";
+import Search from "./Components/Search";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const apiKey = "AIzaSyAg4ghOgmXwoP-xCgYlG1xvh-Jx86_iozk";
+
+export default class App extends Component {
+  state = {
+    items: [],
+  };
+  getResult = async (e) => {
+    e.preventDefault();
+    let search = e.target.elements.search.value;
+    let api = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${apiKey}&type=video&q=${search}&maxResults=10`
+    );
+    let data = await api.json();
+    this.setState({ items: data.items });
+  };
+  render() {
+    return (
+      <>
+        <Search getResult={this.getResult} />
+        <Display items={this.state.items} />
+      </>
+    );
+  }
 }
-
-export default App;
