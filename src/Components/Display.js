@@ -11,7 +11,7 @@ export default class Display extends Component {
             className="border border-danger my-2 mx-2"
             width="250"
             height="250"
-            src="http://www.youtube.com/embed/${items.id.videosId}"
+            src={`http://www.youtube.com/embed/${item.id.videoId}`}
             frameborder="0"
           ></iframe>
         </div>
