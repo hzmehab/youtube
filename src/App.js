@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./App.css";
 import Display from "./Components/Display";
 import Search from "./Components/Search";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Container from "@mui/material/Container";
 
 const apiKey = "AIzaSyAg4ghOgmXwoP-xCgYlG1xvh-Jx86_iozk";
 
@@ -19,9 +20,11 @@ export default function App() {
   };
 
   return (
-    <>
-      <Search getResult={getResult} />
-      <Display items={items} />
-    </>
+    <div className="App">
+      <Container>
+        <Search getResult={getResult} />
+        <Display items={items} />
+      </Container>
+    </div>
   );
 }

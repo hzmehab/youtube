@@ -1,17 +1,31 @@
 import React from "react";
+import { Button, TextField, Paper, Typography } from "@mui/material";
 
 export default function Search(props) {
   return (
-    <div className="d-flex justify-content-center p-3">
+    <Paper
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        p: 3,
+      }}
+    >
+      <Typography variant="h4" color="error">
+        Youtube
+      </Typography>
       <form onSubmit={props.getResult}>
-        <input
-          className="py-1 px-3 m-2"
-          type="search"
-          name="search"
-          placeholder="What you think?"
-        ></input>
-        <button className="btn btn-danger">Search</button>
+        <TextField
+          id="search"
+          label="Search"
+          variant="outlined"
+          size="small"
+          sx={{ mx: 1 }}
+        />
+        <Button variant="contained" size="medium" color="error">
+          Search
+        </Button>
       </form>
-    </div>
+    </Paper>
   );
 }
