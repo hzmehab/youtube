@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Display from "./Components/Display";
 import Search from "./Components/Search";
+import Navbar from "./Components/Navbar";
 import Container from "@mui/material/Container";
 
 const apiKey = "AIzaSyAg4ghOgmXwoP-xCgYlG1xvh-Jx86_iozk";
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <div className="App">
       <Container>
+        <Navbar />
         <Search getResult={getResult} />
         <Display items={items} />
       </Container>
