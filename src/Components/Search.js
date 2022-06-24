@@ -22,7 +22,13 @@ export default function Search(props) {
           size="small"
           sx={{ mx: 1 }}
         />
-        <Button variant="contained" size="medium" color="error">
+        <Button
+          variant="contained"
+          size="medium"
+          color="error"
+          type="submit"
+          onSubmit={props.getResult}
+        >
           Search
         </Button>
       </form>
