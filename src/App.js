@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import "./App.css";
-import Display from "./Components/Display";
+import All from "./Components/All";
 import Search from "./Components/Search";
 import Navbar from "./Components/Navbar";
-import Container from "@mui/material/Container";
+import { Container } from "@mui/material";
+import Trend from "./Components/Trend";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const apiKey = "AIzaSyAg4ghOgmXwoP-xCgYlG1xvh-Jx86_iozk";
+
+export const itemsContext = createContext([]);
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -21,12 +25,19 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <Container>
-        <Navbar />
-        <Search getResult={getResult} />
-        <Display items={items} />
-      </Container>
-    </div>
+    <itemsContext.Provider value={items}>
+      <div className="App">
+        <Container>
+          <Search getResult={getResult} />
+          <Navbar />
+          <All />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/trend" element={<Trend />} />
+            </Routes>
+          </BrowserRouter>
+        </Container>
+      </div>
+    </itemsContext.Provider>
   );
 }

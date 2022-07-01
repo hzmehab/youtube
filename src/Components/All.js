@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
+import { itemsContext } from "../App";
 
-export default function Display(props) {
-  let items = props.items;
+export default function Display() {
+  const items = useContext(itemsContext);
+
   return (
     <Grid container spacing={1}>
       {items.map((item, index) => {

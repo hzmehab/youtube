@@ -1,6 +1,12 @@
 import React from "react";
-import Trend from "./Trend";
+import { BrowserRouter, Link } from "react-router-dom";
 
 export default function Navbar() {
-  return <div>Navbar</div>;
+  return (
+    <BrowserRouter>
+      <div>
+        <Link to="/trend">Trend</Link>
+      </div>
+    </BrowserRouter>
+  );
 }
