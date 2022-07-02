@@ -30,9 +30,9 @@ export default function App() {
         <Container>
           <Search getResult={getResult} />
           <Navbar />
-          <All />
           <BrowserRouter>
             <Routes>
+              <Route path="/" element={<All />} />
               <Route path="/trend" element={<Trend />} />
             </Routes>
           </BrowserRouter>
