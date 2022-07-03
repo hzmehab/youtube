@@ -4,8 +4,8 @@ import ReactPlayer from "react-player";
 import { itemsContext } from "../App";
 
 export default function Display() {
-  const items = useContext(itemsContext);
-
+  const { items, currentPage } = useContext(itemsContext);
+  console.log(currentPage)
   return (
     <Grid container spacing={1}>
       {items.map((item, index) => {

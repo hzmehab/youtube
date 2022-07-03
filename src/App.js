@@ -13,6 +13,7 @@ export const itemsContext = createContext([]);
 
 export default function App() {
   const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState('all')
 
   const getResult = async (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ export default function App() {
   };
 
   return (
-    <itemsContext.Provider value={items}>
+    <itemsContext.Provider value={{items, setItems, currentPage, setCurrentPage}}>
       <div className="App">
         <Container>
           <Search getResult={getResult} />
