@@ -1,10 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
 import { itemsContext } from "../App";
+import { getTrends } from '../Components/APIList'
 
 export default function Trend() {
-  const items = useContext(itemsContext);
+  const {items, setItems, currentPage, setCurrentPage} = useContext(itemsContext);
+
+  const fetchTrends = async (trendId) => {
+    let api = await fetch(getTrends(trendId))
+    let data = await api.json();
+    setItems(data.items);
+  };
+
+  useEffect(() => {
+    setCurrentPage('trend')
+    fetchTrends('20')
+  }, [])
 
   return (
     <Grid container spacing={1}>
